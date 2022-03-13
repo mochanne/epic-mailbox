@@ -1,0 +1,9 @@
+stap 1: open mysql met sudo service mysql start
+stap 2: sudo mysql
+stap 3: CREATE DATABASE mail_database;
+stap 4: GRANT ALL ON mail_database.* to 'laravel_user'@'localhost';
+    ZORG DAT JE USER OVEREEN KOMT MET DE .ENV FILE!!!
+stap 5: php artisan migrate
+stap 6: php artisan db:seed
+stap 7: php artisan service
+stap 8: /letter om de database te updaten
