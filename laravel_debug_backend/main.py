@@ -7,7 +7,7 @@ import os
 mydb = mysql.connector.connect(
     host="localhost",
     user="laravel_user",
-    passwd="wachtwoord",
+    passwd="1971",
     database="mail_database"
 )
 
@@ -20,7 +20,7 @@ while True:
     ls = [char for char in rcv]
     print(rcv)
     if len(ls) == 1:
-        print(ls[0])
+
         if(ls[0] == 98):
             print("post")
             mycursor.execute("UPDATE letters SET Brief_in_bus = 1;")
