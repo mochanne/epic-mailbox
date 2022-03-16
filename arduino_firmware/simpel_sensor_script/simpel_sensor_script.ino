@@ -29,8 +29,8 @@ float get_raw_pulse(int trig, int echo) {
 long pulse_to_distance(long pulse_time) {
     // afstand in cm (afstand in cm per microseconde, gedeeld door 2 omdat het ultrasonische geluid heen en terug gaat)
     return pulse_time * 0.0343 / 2;
-
 }
+
 
 long get_distance(int trig, int echo) {
     // Ease of use functie
