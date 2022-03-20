@@ -15,7 +15,7 @@ class CreateHistoryTable extends Migration
     {
         Schema::create('history', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text("Soort ontvangst");
+            $table->text("Soort_ontvangst");
             $table->timestamp("ontvangen_om")->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }

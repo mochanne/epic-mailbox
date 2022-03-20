@@ -9,7 +9,7 @@ class HistoryController extends Controller
     public function index(){
 
         return view('index',[
-            'history' => \App\Models\History::all(),
+            'history' => \App\Models\History::latest('id')->first()
         ]);
     }
 }

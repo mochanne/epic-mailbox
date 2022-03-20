@@ -17,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-route::get('/letter', '\App\Http\Controllers\LetterController@checkPost');
+Route::get('/letter', '\App\Http\Controllers\LetterController@checkPost');
 Route::get('/', [\App\Http\Controllers\HistoryController::class,'index']);
+// Route::get('/{id}', [\App\Http\Controllers\HistoryController::class,'index']);

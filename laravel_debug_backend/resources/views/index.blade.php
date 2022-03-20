@@ -7,7 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>hoi</h1>
-    {{$history}}
+    <h1>Laatste ontvangst</h1>
+    {{$history->ontvangen_om}}
+    {{$history->Soort_ontvangst}}
 </body>
-</html>
+</html>1
