@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 route::get('/letter', '\App\Http\Controllers\LetterController@checkPost');
+Route::get('/', [\App\Http\Controllers\HistoryController::class,'index']);
