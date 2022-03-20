@@ -24,11 +24,16 @@ while True:
         if(ls[0] == 98):
             print("post")
             mycursor.execute("UPDATE letters SET Brief_in_bus = 1;")
+            f = open("state.txt", "w")
+            f.write("1")
+            f.close()
         elif(ls[0] == 97):
             print("geen post")
             mycursor.execute("UPDATE letters SET Brief_in_bus = 0;")
+            f = open("state.txt", "w")
+            f.write("0")
+            f.close()
 
-    time.sleep(1)
     mydb.commit()
 
 mydb.close()
