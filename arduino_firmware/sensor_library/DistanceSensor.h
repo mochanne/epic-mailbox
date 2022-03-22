@@ -24,11 +24,12 @@ class DistanceSensor
 
         void calibrate(int repeats = 10, double margin = 0.97);
         double get_obstruction();
-        bool is_obstructed(double obstructed_percentage = 0.9);
+        bool is_obstructed(double obstructed_percentage = 0.85);
 
         double baseline = 0;
     private:
         int _trig_pin;
         int _echo_pin;
 };
+
 #endif

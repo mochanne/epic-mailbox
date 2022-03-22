@@ -3,17 +3,36 @@
 // Dit is een kort script dat laat zien hoe je de custom DistanceSensor klasse gebruikt
 
 
+DistanceSensor sensoren[] = {DistanceSensor(4,5)};
+// DistanceSensor sensor(5,4);
 
-
-DistanceSensor sensor(5,4);
+void calibrate_all(DistanceSensor sns[]) {
+    for (int i = 0; i < sizeof(sns)/sizeof(sns[0]); i++) {
+        sns[i].calibrate();
+    }
+}
 
 void setup() {
     Serial.begin(9600);
-    sensor.calibrate();
+    calibrate_all(sensoren);
+}
+
+
+bool get_obstructed_count(DistanceSensor sns[]) {
+    int obstructed_count = 0;
+    for (int i = 0; i < sizeof(sns)/sizeof(sns[0]); i++) {
+        if (sns[i].is_obstructed()) {
+            obstructed_count++;
+        }
+    }
+    return obstructed_count;
 }
 
 
 void loop() {
+    DistanceSensor sensor = sensoren[0];
+    get_obstructed_count(sensoren);
+
     Serial.print("covered: ");
     Serial.print(sensor.is_covered());
     Serial.println();

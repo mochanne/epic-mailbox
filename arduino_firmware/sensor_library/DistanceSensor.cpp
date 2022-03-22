@@ -2,6 +2,9 @@
 #include "DistanceSensor.h"
 
 
+
+// vvvv code voor een enekele sensor vvvvv
+
 DistanceSensor::DistanceSensor(int trig_pin, int echo_pin) {
     pinMode(trig_pin, OUTPUT);
     pinMode(echo_pin, INPUT);
@@ -34,7 +37,7 @@ long DistanceSensor::stable_pulse(int repeats = 5) {
     long out = 0;
     for (int i = 0; i < repeats; i++) {
         out = out + pulse();
-        delay(50);
+        delay(25);
     }
     return out/repeats;
 }
@@ -58,8 +61,6 @@ bool DistanceSensor::is_covered(long covered_pulse = 18000) {
     // Als er wel met grote afstanden word gewerkt (ik gok ongeveer >5 meter), zal dit vaak valspositieven geven
     return pulse() > covered_pulse;
 }
-
-
 
 
 
@@ -98,7 +99,8 @@ double DistanceSensor::get_obstruction() {
 }
 
 
-bool DistanceSensor::is_obstructed(double obstructed_percentage = 0.9) {
+bool DistanceSensor::is_obstructed(double obstructed_percentage = 0.85) {
+    // Beter alternatief voor is_covered
     return get_obstruction() < obstructed_percentage;
 }
 
