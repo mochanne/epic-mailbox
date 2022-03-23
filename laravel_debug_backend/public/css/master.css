@@ -162,4 +162,20 @@ hr.line{
     text-align: left;
     grid-template-columns: 80% 20%;
     line-height: 180%;
+    margin-bottom: 15px;
 }
+
+#js--time{
+    font-size: 1rem;
+}
+
+.fade-in{
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    0% { color: black; }
+    20% { color: black;}
+    60% { color: rgb(174, 206, 255);}
+    100% { color: black;}
+  }

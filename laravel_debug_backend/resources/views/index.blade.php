@@ -25,8 +25,8 @@
                 email
                 </span>
                 <p>Laatste ontvangst</p>
-                <p class="bold">{{$history->ontvangen_om}}</p>
-                <hr class="line">
+                <p class="fade-in bold">{{$history->ontvangen_om}}</p>
+                <hr class="line">   
                 <a href="/" class="button primary">Nu controleren</a>
                 <a href="/" class="button secondary">Alle post</a>
                 <span class="material-icons-round grey">
@@ -55,6 +55,7 @@
                     task_alt
                     </p>
                 </section>
+                <a href="/" class="button secondary">Checks uitvoeren</a>
             </section>
         </section>
     </article>
