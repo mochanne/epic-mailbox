@@ -28,7 +28,7 @@ while True:
     
         if(ls[0] == 98):
             print("post")
-            mycursor.execute("UPDATE letters SET Brief_in_bus = 1;")
+            mycursor.execute("UPDATE letters SET Brief_in_bus = 'Vol';")
             f = open("state.txt", "w")
             f.write("1")
             f.close()
@@ -37,7 +37,7 @@ while True:
             f.close()
         elif(ls[0] == 97):
             print("geen post")
-            mycursor.execute("UPDATE letters SET Brief_in_bus = 0;")
+            mycursor.execute("UPDATE letters SET Brief_in_bus = 'Leeg';")
             f = open("state.txt", "w")
             f.write("0")
             f.close()

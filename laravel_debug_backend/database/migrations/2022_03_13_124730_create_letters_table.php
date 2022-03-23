@@ -14,7 +14,7 @@ class CreateLettersTable extends Migration
     public function up()
     {
         Schema::create('letters', function (Blueprint $table) {
-            $table->integer("Brief_in_bus");
+            $table->string("Brief_in_bus");
             $table->timestamp("created_at")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp("updated_at")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->bigIncrements('id');

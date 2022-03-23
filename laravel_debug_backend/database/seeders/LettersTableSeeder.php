@@ -14,7 +14,7 @@ class LettersTableSeeder extends Seeder
     public function run()
     {
         DB::table('letters')->insert([
-            'Brief_in_bus' => 0
+            'Brief_in_bus' => "Vol"
         ]);
     }
 }

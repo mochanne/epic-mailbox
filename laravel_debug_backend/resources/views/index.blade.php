@@ -26,6 +26,7 @@
                 </span>
                 <p>Laatste ontvangst</p>
                 <p class="fade-in bold">{{$history->ontvangen_om}}</p>
+                <p class="blue bold p-padding">{{$letter->Brief_in_bus}}</p>
                 <hr class="line">   
                 <a href="/" class="button primary">Nu controleren</a>
                 <a href="/" class="button secondary">Alle post</a>

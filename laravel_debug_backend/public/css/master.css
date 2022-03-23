@@ -74,7 +74,7 @@ header > img{
     border-radius: 12px;
     font-size: 2.5rem;
     width: 30vw;
-    height: 52vh;
+    height: 55vh;
 }
 
 .card--wrapper > h1{
@@ -156,6 +156,9 @@ hr.line{
     place-self: end;
 }
 
+.p-padding{
+    margin-top: 5%;
+}
 
 .status-grid--wrapper{
     font-size: 1.5rem;
