@@ -1,0 +1,165 @@
+:root{
+    --white: #ffffff;
+    --black: #000000;
+    --blue: #0A0A58;
+    --light-blue: #E1F3FF;
+    --grey: #9D9D9D;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+html{
+    box-sizing: inherit;
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 1.8rem;
+    padding-top: 2rem;
+    background: var(--blue);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+header > h1{
+    text-align: center;
+    margin-top: 1%;
+    font-weight: 600;
+    color: var(--white);
+    font-size: 5rem;
+}
+
+header > img{
+    width: 10vw;
+    margin-left: 1%;
+}
+
+.card--wrapper > h1{
+    font-weight: 200;
+}
+
+.content--wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    color: var(--white);
+    margin-top: 50px;
+    gap: 80px;
+}
+
+.card--wrapper{
+    text-align: center;
+}
+
+.grid-left{
+    justify-self: end;
+}
+
+.grid-right{
+    justify-self: start;
+}
+
+.card-in--wrapper{
+    background-color: var(--light-blue);
+    color: var(--black);
+    padding: 10px 50px 10px 50px;
+    border-radius: 12px;
+    font-size: 2.5rem;
+    width: 30vw;
+    height: 52vh;
+}
+
+.card--wrapper > h1{
+    margin-bottom: 2%;
+    font-size: 4rem;
+}
+
+.status-grid--wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.material-icons-outlined{
+    color: var(--blue);
+}
+
+.bold{
+    font-weight: bold;
+}
+
+hr.line{
+    border: 1px solid var(--blue);
+    border-radius: 12px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.button{
+    display: block;
+    margin: auto;
+    width: 50%;
+    font-size: 2rem;
+    border-radius: 6px;
+    width: 25rem;
+    height: 5rem;
+    cursor: pointer;
+    transition: 0.5s;
+    text-align: center;
+    line-height: 230%;
+    margin-bottom: 20px;
+}
+
+
+.primary{
+    background-color: var(--blue);
+    color: var(--light-blue);
+}
+
+.secondary{
+    background-color: var(--light-blue);
+    color: var(--blue);
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.25);
+}
+
+.primary:hover{
+    background-color: #060631;
+
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.25);
+}
+
+.secondary:hover{
+    color: var(--light-blue);
+    background-color: var(--blue);
+}
+
+.grey{
+    color: var(--grey);
+}
+
+.blue{
+    color: var(--blue);
+}
+
+.less-importance{
+    color: var(--grey);
+}
+
+.status-grid-right{
+    place-self: end;
+}
+
+
+.status-grid--wrapper{
+    font-size: 1.5rem;
+    text-align: left;
+    grid-template-columns: 80% 20%;
+    line-height: 180%;
+}
