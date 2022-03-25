@@ -19,4 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/letter', '\App\Http\Controllers\LetterController@checkPost');
 Route::get('/', [\App\Http\Controllers\HistoryController::class,'index']);
+Route::get('/posttest/', [\App\Http\Controllers\HistoryController::class,'posttest']);
+Route::get('/posttest/{amount}', [\App\Http\Controllers\HistoryController::class,'posttest']);
 // Route::get('/{id}', [\App\Http\Controllers\HistoryController::class,'index']);

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="/js/main.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 </head>
@@ -25,11 +26,11 @@
                 email
                 </span>
                 <p>Laatste ontvangst</p>
-                <p class="fade-in bold">{{$history->ontvangen_om}}</p>
+                <p class="fade-in bold">{{$historyLatest->ontvangen_om}}</p>
                 <p class="blue bold p-padding">{{$letter->Brief_in_bus}}</p>
                 <hr class="line">   
                 <a href="/" class="button primary">Nu controleren</a>
-                <a href="/" class="button secondary">Alle post</a>
+                <a class="button secondary" onclick='openHistory()'>Alle post</a>
                 <span class="material-icons-round grey">
                 autorenew
                 </span>
@@ -58,6 +59,18 @@
                 </section>
                 <a href="/" class="button secondary">Checks uitvoeren</a>
             </section>
+        </section>
+
+        <section class="history_card_wrapper" id="js--history_card">
+            <span class="material-icons-outlined grey" style="font-size:40px;" onclick='closeHistory()'>
+            cancel
+            </span>
+            <h1>Geschiedenis</h1>
+            <article class="letterCard--wrapper">
+                @foreach($history as $history)
+                    @include('components.letterCard')
+                @endforeach
+            </article>
         </section>
     </article>
 </body>
