@@ -205,7 +205,7 @@ hr.line{
     margin: 20px;
     padding: 20px;
     border-radius: 12px;
-    width: 35vw;
+    width: 80%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -256,4 +256,58 @@ hr.line{
     20% { color: black;}
     60% { color: rgb(174, 206, 255);}
     100% { color: black;}
+  }
+
+  @media(max-width: 1400px){
+    .history_card_wrapper{
+        width: 70vw;
+    }
+  }
+
+  @media(max-width: 1200px){
+    .content--wrapper{
+        grid-template-columns: 1fr;
+    }
+
+    .grid-left, .grid-right{
+        justify-self: center;
+    }
+
+    .card-in--wrapper{
+        width: 50vw;
+        height: 45vh;
+    }
+    .history_card_wrapper{
+        width: 85vw;
+    }
+  }
+
+  @media(max-width: 700px){
+    .card-in--wrapper{
+        width: 70vw;
+        height: 45vh;
+    }
+
+    .history_card_wrapper{
+        width: 100vw;
+    }
+    .letterCard{
+        text-align: center;
+    }
+  }
+
+  @media(max-width: 500px){
+    .card-in--wrapper{
+        width: 90vw;
+        height: 45vh;
+    }
+    .letterCard > h1{
+        text-align: center;
+        font-size: 2rem;
+    }
+    .letterCard{
+        width: 95%;
+    }
+
+
   }
