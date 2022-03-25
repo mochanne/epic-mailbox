@@ -62,7 +62,7 @@
         </section>
 
         <section class="history_card_wrapper" id="js--history_card">
-            <span class="material-icons-outlined grey" style="font-size:40px;" onclick='closeHistory()'>
+            <span class="material-icons-outlined blue" style="font-size:40px;" onclick='closeHistory()'>
             cancel
             </span>
             <h1>Geschiedenis</h1>
