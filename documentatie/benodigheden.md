@@ -10,6 +10,7 @@
 - [Kabels                           ](https://www.tinytronics.nl/shop/nl/kabels-en-connectoren/kabels-en-adapters/prototyping-draden/dupont-compatible-en-jumper/dupont-jumper-draad-male-male-20cm-10-draden) 
 - [Resistors                        ](https://www.tinytronics.nl/shop/nl/componenten/weerstanden/weerstanden/10k%CF%89-weerstand-standaard-pull-up-of-pull-down-weerstand)
 - [3.3v naar 5v converter         1x](https://www.tinytronics.nl/shop/nl/communicatie-en-signalen/level-converters/spi-i2c-uart-bi-directionele-logic-level-converter-4-kanaals)
+- [Breadboard voeding                    1x](https://www.tinytronics.nl/shop/nl/power/spanningsconverters/spanningsregelaars/breadboard-voeding-5v-en-3.3v)
 
 ## Waar zijn de benodigdheden voor nodig?
 
@@ -32,3 +33,5 @@ De kabels zijn belangrijk om alles goed aan elkaar aan te sluiten. Wij raden kab
 De resistors zijn nodig om te zorgen dat er niet te veel spanning op modules komt te staan. We raden er minimaal 5 aan, zodat de spanning nergens te veel wordt. Ook moeten deze resistors tenminste 10kΩ zijn.
 
 De 3.3v naar 5v converter is nodig, omdat de wifi module op 3.3v draait en de communicatie van de Arduino via 5V gaat.
+
+De breadboard voeding is nodig om de ESP8266 van stroom te voorzien omdat de Arduino Nano zelf niet genoeg stroom kan leveren.
