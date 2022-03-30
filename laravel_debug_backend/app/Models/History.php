@@ -10,4 +10,8 @@ class History extends Model
     use HasFactory;
 
     protected $table = "history";
+
+    protected $fillable = ['Soort_ontvangst'];
+
+    public $timestamps = false;
 }
