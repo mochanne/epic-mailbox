@@ -17,8 +17,8 @@ const int baud_rate = 115200;
 
 SoftwareSerial ESPserial(rx_pin, tx_pin); // RX | TX
 
- 
 
+bool initialrun = false;
 
 
 
@@ -26,47 +26,71 @@ void setup()
 
 {
 
-  Serial.begin(9600);
-  ESPserial.begin(9600);
+  Serial.begin(baud_rate);
+  ESPserial.begin(baud_rate);
 
+
+}
+
+
+void heartbeat() {
+
+}
+
+
+void mainloop() {
+
+}
+
+
+void run_initialisation() {
   Serial.println("Debug start");
 
   Serial.print("Waiting on serial");
   while (not ESPserial.available() ) {
     ESPserial.write("AT");
     delay(100);
-    Serial.print("."); 
+    Serial.print(".");
   }
   Serial.println();
   Serial.println("Serial connected.");
 
-  Serial.println("Changing ESP8266 bauderate to 9600 if it hasn't already.");
-  ESPserial.write("AT+UART_DEF=9600,8,1,0,0");
-  Serial.println("If you haven't run this before, please change the bauderate");
-  
-  Serial.println("connecting to "+SSID);
+  if (baud_rate > 9600) {
+    Serial.println("Changing ESP8266 bauderate to 9600 if it hasn't already.");
+    ESPserial.write("AT+UART_DEF=9600,8,1,0,0");
+    Serial.println("If you haven't run this before, please change the bauderate in the sketch file & reflash");
+  }
+
+  Serial.println("connecting to " + SSID);
   Serial.println("Waiting on connection...");
-  ESPserial.print("AT+CWJAP_CUR=\""+SSID+"\",\""+password+"\"");
-    Serial.println("ESP >> ");
+  ESPserial.print("AT+CWJAP_CUR=\"" + SSID + "\",\"" + password + "\"");
+  Serial.println("ESP >> ");
+  delay(500);
   while (ESPserial.available()) {
     Serial.print(ESPserial.read());
   }
- 
-  Serial.println("Ready");
-}
 
+  Serial.println("Ready");
+  initialrun = false;
+}
 
 
 
 void loop()
 
 {
-  
+   if (initialrun) {
+      run_initialisation();
+  } else {
+    mainloop();
+  }
+
+
   // listen for communication from the ESP8266 and then write it to the serial monitor
- 
+
   if ( ESPserial.available() ) {
 
-    
+
     Serial.write( ESPserial.read() );
   }
 
@@ -75,5 +99,6 @@ void loop()
   if ( Serial.available() ) {
     ESPserial.write( Serial.read() );
   }
+  delay(50);
 
 }
