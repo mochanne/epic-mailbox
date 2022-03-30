@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Letter;
 use App\Models\History;
+use App\Models\Status;
+
 class LetterController extends Controller
 {
     public function checkPost(){
@@ -35,6 +37,20 @@ class LetterController extends Controller
         ]);
 
         $History->save();
+        return redirect('/');
+    }
+
+    public function status(){
+        $Status = Status::all()->first();
+
+        if($Status->update == '0'){
+            $Status->update = '1';
+        }
+        else if($Status->update == '1'){
+            $Status->update = '0';
+        }
+
+        $Status->save();
         return redirect('/');
     }
 }

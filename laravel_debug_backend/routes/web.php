@@ -20,8 +20,11 @@ use Illuminate\Support\Facades\Route;
 // /api/geenpost -> database brief_in_bus -> leeg
 // /api/heartbeat -> database heartbeat table met tijd 
 Route::get('/letter', '\App\Http\Controllers\LetterController@checkPost');
+
 Route::get('/api/welpost', '\App\Http\Controllers\LetterController@welPost');
 Route::get('/api/geenpost', '\App\Http\Controllers\LetterController@geenPost');
+Route::get('/api/heartbeat', '\App\Http\Controllers\LetterController@status');
+
 Route::get('/', [\App\Http\Controllers\HistoryController::class,'index']);
 Route::get('/posttest/', [\App\Http\Controllers\HistoryController::class,'posttest']);
 Route::get('/posttest/{amount}', [\App\Http\Controllers\HistoryController::class,'posttest']);
