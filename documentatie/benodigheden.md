@@ -11,6 +11,7 @@
 - [Resistors                        ](https://www.tinytronics.nl/shop/nl/componenten/weerstanden/weerstanden/10k%CF%89-weerstand-standaard-pull-up-of-pull-down-weerstand)
 - [3.3v naar 5v converter         1x](https://www.tinytronics.nl/shop/nl/communicatie-en-signalen/level-converters/spi-i2c-uart-bi-directionele-logic-level-converter-4-kanaals)
 - [Breadboard voeding                    1x](https://www.tinytronics.nl/shop/nl/power/spanningsconverters/spanningsregelaars/breadboard-voeding-5v-en-3.3v)
+- [LCD Display                    1x](https://www.tinytronics.nl/shop/en/displays/lcd/lcd-display-16*2-characters-with-white-text-and-blue-backlight-with-i2c-backpack)
 
 ## Waar zijn de benodigdheden voor nodig?
 
@@ -24,14 +25,16 @@ De Wi-Fi module (ESP8266 ESP01) is nodig om verbinding te maken met een Wi-Fi ne
 
 De Arduino is belangrijk om te zorgen dat alles aangesloten wordt, de juiste functie uitvoert, en om de nieuwe data naar de backend te sturen via de Wi-Fi module. Het is het beste om gebruik te maken van een Arduino nano, sinds deze in dit project gebruikt wordt. Een Arduino uno inplaats van de Arduino nano zou ook moeten werken maar deze is een stuk groter en past niet op het breadboard.
 
-Het breadboard is nodig om te zorgen dat alle kabels en modules goed met elkaar verbonden zijn, en dat de nodige modules genoeg elektriciteit hebben. Het is belangrijk dat er tenminste 830 pins in het breadboard zitten zodat er genoeg ruimte is voor alles wat aangesloten moet worden. Meer is voor dit project niet nodig.
+Het breadboard is nodig om te zorgen dat alle kabels en modules goed met elkaar verbonden zijn, en dat de nodige modules genoeg elektriciteit hebben. We gebruiken voor dit project een breadboard met 830 punten zodat er voor alle componenten genoeg ruimte is.
 
-De ultrasonische sensor zorgt voor het detecteren van de beweging van brieven, waardoor er updates en notificaties kunnen worden gestuurd naar het domotica systeem. Om te zorgen dat er geen brieven gemist worden zijn er minimaal 5 sensoren nodig.
+De ultrasonische sensor zorgt voor het detecteren van de beweging van brieven, waardoor er updates en notificaties kunnen worden gestuurd naar het domotica systeem. Om te zorgen dat er geen brieven gemist worden zijn er minimaal 5 sensoren nodig. 
 
-De kabels zijn belangrijk om alles goed aan elkaar aan te sluiten. Wij raden kabels aan met een minimale lengte van 20 cm. Ook zijn er minimaal 20 kabels nodig, omdat er veel dingen zullen moeten worden aangesloten.
+De kabels zijn belangrijk om alles goed aan elkaar aan te sluiten. Ook zijn er minimaal 20 kabels nodig, omdat er veel dingen zullen moeten worden aangesloten. Voor op het breadboard gebruiken we male-male kabels en om de verschillende modules aan te sluiten gebruiken we male-female kabels.
 
 De resistors zijn nodig om te zorgen dat er niet te veel spanning op modules komt te staan. We raden er minimaal 5 aan, zodat de spanning nergens te veel wordt. Ook moeten deze resistors tenminste 10kΩ zijn.
 
 De 3.3v naar 5v converter is nodig, omdat de wifi module op 3.3v draait en de communicatie van de Arduino via 5V gaat.
 
 De breadboard voeding is nodig om de ESP8266 van stroom te voorzien omdat de Arduino Nano zelf niet genoeg stroom kan leveren.
+
+De LCD display wordt gebruikt om de status van de Arduino te tonen en eventueel andere informatie over het systeem. 
