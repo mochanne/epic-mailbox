@@ -8,18 +8,20 @@ const String backend_ip = "192.168.0.1";
 const int rx_pin = 3;
 const int tx_pin = 4;
 
+/// Send heartbeat every 30000 seconds to backend
+const heartbeat_rate = 30000;
 
 /// Default esp baudrate. this is too fast for the arduino, so the new baudrate is flashed to the ESP8266 on first run
 /// Comment out the first line and uncomment the second line after first run, then reupload
-const int baud_rate = 115200;
-//const int baud_rate = 9600;/
+//const int baud_rate = 115200;/
+const int baud_rate = 9600;//
 
 
 SoftwareSerial ESPserial(rx_pin, tx_pin); // RX | TX
 
 
 bool initialrun = false;
-
+int ms_since = 0;
 
 
 void setup()
@@ -47,7 +49,7 @@ void run_initialisation() {
   Serial.println("Debug start");
 
   Serial.print("Waiting on serial");
-  while (not ESPserial.available() ) {
+  while (!ESPserial) {
     ESPserial.write("AT");
     delay(100);
     Serial.print(".");
@@ -71,7 +73,7 @@ void run_initialisation() {
   }
 
   Serial.println("Ready");
-  initialrun = false;
+  initialrun = true;
 }
 
 
@@ -84,7 +86,7 @@ void loop()
   } else {
     mainloop();
   }
-
+  
 
   // listen for communication from the ESP8266 and then write it to the serial monitor
 
