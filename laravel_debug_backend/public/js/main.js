@@ -23,7 +23,7 @@ const check_heartbeat = () => {
     checkmark_connection.style.color = "red";
     general_checkmark.innerHTML = "error_outline";
     general_checkmark.style.color = "red";
-    connec.style.color = "red";
+    connection_text.style.color = "red";
     status_text.innerHTML = "niet naar behoren";
   } 
   else {
