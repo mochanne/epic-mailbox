@@ -45,8 +45,8 @@
                 <span class="material-icons-round blue" id="js--checkmark" style="font-size:48px;">
                 task_alt
                 </span>
-                <p>Alles werkt naar</p>
-                <p class="status" id="status_text">behoren</p>
+                <p>Alles werkt</p>
+                <p class="status" id="status_text">naar behoren</p>
                 <hr class="line">
                 <section class="status-grid--wrapper less-importance">
                     <p id="js--connection-text">Verbinding met de brievenbus</p>
