@@ -1,86 +1,123 @@
 #include <SoftwareSerial.h>
-#include "esp8266_AT.h"
 
 
+const String SSID = "VRV951796F6D2";
+const String password = "FVTKcUq6CqAg";
+const String backend_ip = "192.168.2.173";
 
-// wifi SSID
-#define SSID "gamerzone"
-// wifi password
-#define password "12345678"
+const int rx_pin = 3;
+const int tx_pin = 4;
 
+/// Send heartbeat every 30000 seconds to backend
+const int heartbeat_rate = 30000;
 
-// IP of laravel backend
-const String backend_ip = "192.168.0.1";
-
-/// Send heartbeat every 30000 seconds to backend to make sure it knows we're OK
-const int heartbeat_rate = 5000;
-
-
-
-
+/// Default esp baudrate. this is too fast for the arduino, so the new baudrate is flashed to the ESP8266 on first run
+/// Comment out the first line and uncomment the second line after first run, then reupload
+//const int baud_rate = 115200;/
+const int baud_rate = 9600;//
 
 
+SoftwareSerial ESPserial(rx_pin, tx_pin); // RX | TX
 
-// pin numbers of helper debug software serial
-#define rx_pin 3
-#define tx_pin 4
-
-#define SERIAL_SPEED 115200
-#define SERIAL_TIMEOUT 8000
-
-SoftwareSerial ESPserial(rx_pin, tx_pin);
-Esp8266AT esp8266AT(&ESPserial, &Serial);
-
-// SoftwareSerial ESPserial(rx_pin, tx_pin); // RX | TX
 
 bool initialrun = false;
 int ms_since = 0;
-bool connected = false;
+
 
 void setup()
 
 {
 
-  Serial.begin(SERIAL_SPEED);
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
-  }
-  Serial.setTimeout(SERIAL_TIMEOUT);
+  Serial.begin(baud_rate);
+  ESPserial.begin(baud_rate);
+ 
 
-  // set the data rate for the SoftwareSerial port
-  ESPserial.begin(SERIAL_SPEED);
+}
 
-  // Serial.begin(baud_rate);
-  // ESPserial.begin(baud_rate);
+void espsend(String in, int wait = 1000) {
+  ESPserial.print(in);
+  delay(wait);
 }
 
 void heartbeat() {
-  Serial.println("sending heartbeat!");
-  if (!esp8266AT.post(backend_ip, 80, "/api/heartbeat", "application/x-www-form-urlencoded","", "200")) {
-    Serial.println("Last GET was failed");
-  }
-
+  connect(backend_ip, "80");
+  make_get("/api/heartbeat/");  
 }
 
-void mainloop() {}
+void connect(String ip, String port) {
+  String out = "AT+CIPSTART=";
+  out +="\"TCP\",";
+  out +="\"";
+  out += ip;
+  out +="\",";
+  out += port;
+  espsend(out+"\r\n");
+}
 
-void loop() {
 
-  if (!connected) {
-    if (!esp8266AT.setup(SSID, password)) {
-      Serial.println("Connection failed, will repeat in 5 sec");
-    } else {
-      connected = true;
-    }
+
+void make_get(String url) {
+  String amount = (String) sizeof(url+"\r\n");
+  String out = "AT+CIPSEND="+amount+"\r\n";
+  espsend(out);
+  espsend("GET "+url+"HTTP/1.0\r\n");
+}
+
+
+void mainloop() {
+  Serial.println("beat send!");
+  heartbeat();
+  delay(5000);
+}
+
+
+void run_initialisation() {
+  Serial.println("Debug start");
+
+  if (baud_rate > 9600) {
+    Serial.println("Changing ESP8266 bauderate to 9600 if it hasn't already.");
+    ESPserial.write("AT+UART_DEF=9600,8,1,0,0\r\n");
+    Serial.println("If you haven't run this before, please change the bauderate in the sketch file & reflash");
   }
 
-  mainloop();
-
-  if (ms_since > heartbeat_rate) {
-    heartbeat();
-    ms_since = 0;
+  Serial.println("connecting to " + SSID);
+  Serial.println("Waiting on connection...");
+  ESPserial.print("AT+CWJAP_CUR=\"" + SSID + "\",\"" + password + "\"");
+  Serial.println("ESP >> ");
+  delay(500);
+  while (ESPserial.available()) {
+    Serial.print(ESPserial.read());
   }
 
+  Serial.println("Ready");
+  initialrun = true;
+}
+
+
+
+void loop()
+
+{
+   if (initialrun) {
+      run_initialisation();
+  } else {
+    mainloop();
+  }
+  
+
+  // listen for communication from the ESP8266 and then write it to the serial monitor
+
+  if ( ESPserial.available() ) {
+
+
+    Serial.write( ESPserial.read() );
+  }
+
+  // listen for user input and send it to the ESP8266
+
+  if ( Serial.available() ) {
+    ESPserial.write( Serial.read() );
+  }
   delay(50);
-  ms_since += 50;
+
 }
