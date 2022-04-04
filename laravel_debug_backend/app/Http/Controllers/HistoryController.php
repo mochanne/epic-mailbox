@@ -8,11 +8,13 @@ use Carbon\Carbon;
 class HistoryController extends Controller
 {
     public function index(){
-
+        $babaooey = \App\Models\Status::first();
+        
         return view('index',[
             'letter' => \App\Models\Letter::first(),
             'history' => \App\Models\History::all()->sortbyDesc('id')->take('10'),
             'historyLatest' => \App\Models\History::latest('id')->first(),
+            'statusTime' => $babaooey,
         ]);
 
     }

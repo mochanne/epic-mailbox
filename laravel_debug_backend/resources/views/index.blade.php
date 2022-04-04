@@ -18,6 +18,7 @@
     <h1>Overzicht</h1>
 </header>
 <body>
+    <p id="js--heartbeat"> {{strtotime($statusTime->updated_at)}} </p>
     <article class="content--wrapper">
         <section class="card--wrapper grid-left">
             <h1>Activiteit</h1>
@@ -34,22 +35,22 @@
                 <span class="material-icons-round grey">
                 autorenew
                 </span>
-                <p class="less-importance" id="js--time">current_time</p>
+                <p class="less-importance" id="js--time">laden...</p>
             </section>
         </section>
 
         <section class="card--wrapper grid-right">
             <h1>Status</h1>
             <section class="card-in--wrapper">
-                <span class="material-icons-round blue" id="#js--checkmark" style="font-size:48px;">
+                <span class="material-icons-round blue" id="js--checkmark" style="font-size:48px;">
                 task_alt
                 </span>
                 <p>Alles werkt naar</p>
-                <p class="status">behoren</p>
+                <p class="status" id="status_text">behoren</p>
                 <hr class="line">
                 <section class="status-grid--wrapper less-importance">
-                    <p>Verbinding met de brievenbus</p>
-                    <p class="material-icons-round grey status-grid-right">
+                    <p id="js--connection-text">Verbinding met de brievenbus</p>
+                    <p id="js--checkmark_connection" class="material-icons-round grey status-grid-right">
                     task_alt
                     </p>
                     <p>Werking sensoren</p>
