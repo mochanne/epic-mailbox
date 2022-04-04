@@ -35,6 +35,7 @@ void setup()
 }
 
 void espsend(String in, int wait = 1000) {
+  Serial.println("Sending>>"+in);
   ESPserial.print(in);
   delay(wait);
 }
@@ -60,7 +61,7 @@ void make_get(String url) {
   String amount = (String) sizeof(url+"\r\n");
   String out = "AT+CIPSEND="+amount+"\r\n";
   espsend(out);
-  espsend("GET "+url+"HTTP/1.0\r\n");
+  espsend("GET "+url+" HTTP/1.0\r\n");
 }
 
 
