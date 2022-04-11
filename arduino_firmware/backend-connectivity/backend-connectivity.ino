@@ -96,6 +96,14 @@ void connect_ap(String SSID, String password) {
   espsend("AT+CWJAP_CUR=\"" + SSID + "\",\"" + password + "\"", 5000);
 }
 
+void stuur_status(bool wel_post) {
+  connect(backend_ip, "80");
+  if (wel_post) {
+    make_get("/api/welpost");
+  } else {
+    make_get("/api/geenpost");
+  }
+}
 
 void run_initialisation() {
   Serial.println("Debug start");
