@@ -24,6 +24,12 @@ bool initialrun = false;
 int ms_since = 0;
 
 
+void countdelay(int ms) {
+  delay(ms);
+  ms_since += ms;
+}
+
+
 void setup()
 
 {
@@ -37,7 +43,7 @@ void setup()
 void espsend(String in, int wait = 1000) {
   Serial.println("Sending>>"+in);
   ESPserial.print(in);
-  delay(wait);
+  countdelay(wait);
 }
 
 void heartbeat() {
@@ -68,7 +74,7 @@ void make_get(String url) {
 void mainloop() {
   Serial.println("beat send!");
   heartbeat();
-  delay(5000);
+  countdelay(5000);
 }
 
 
@@ -85,7 +91,7 @@ void run_initialisation() {
   Serial.println("Waiting on connection...");
   ESPserial.print("AT+CWJAP_CUR=\"" + SSID + "\",\"" + password + "\"");
   Serial.println("ESP >> ");
-  delay(500);
+  countdelay(500);
   while (ESPserial.available()) {
     Serial.print(ESPserial.read());
   }
@@ -104,6 +110,10 @@ void loop()
   } else {
     mainloop();
   }
+
+  if (ms_since > heartbeat_rate) {
+    heartbeat();
+  }
   
 
   // listen for communication from the ESP8266 and then write it to the serial monitor
@@ -119,6 +129,6 @@ void loop()
   if ( Serial.available() ) {
     ESPserial.write( Serial.read() );
   }
-  delay(50);
+  countdelay(50);
 
 }
