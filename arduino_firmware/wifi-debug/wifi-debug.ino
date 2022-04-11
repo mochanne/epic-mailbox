@@ -1,15 +1,15 @@
 #include <SoftwareSerial.h>
 
 
-const String SSID = "gamerzone";
-const String password = "12345678";
-const String backend_ip = "192.168.0.1";
+const String SSID = "VRV951796F6D2";
+const String password = "FVTKcUq6CqAg";
+const String backend_ip = "192.168.2.175";
 
 const int rx_pin = 3;
 const int tx_pin = 4;
 
 /// Send heartbeat every 30000 seconds to backend
-const heartbeat_rate = 30000;
+const int heartbeat_rate = 30000;
 
 /// Default esp baudrate. this is too fast for the arduino, so the new baudrate is flashed to the ESP8266 on first run
 /// Comment out the first line and uncomment the second line after first run, then reupload

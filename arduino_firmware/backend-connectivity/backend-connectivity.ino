@@ -3,7 +3,7 @@
 
 const String SSID = "VRV951796F6D2";
 const String password = "FVTKcUq6CqAg";
-const String backend_ip = "192.168.2.173";
+const String backend_ip = "192.168.2.175";
 
 const int rx_pin = 3;
 const int tx_pin = 4;
@@ -25,7 +25,12 @@ int ms_since = 0;
 
 
 void countdelay(int ms) {
-  delay(ms);
+  for (int mydelay = 0; mydelay < ms; mydelay += 10) {
+    delay(10);
+    if ( ESPserial.available() ) {
+      Serial.write( ESPserial.read() );
+    }
+  }
   ms_since += ms;
 }
 
@@ -40,46 +45,62 @@ void setup()
 
 }
 
-void espsend(String in, int wait = 1000) {
-  Serial.println("Sending>>"+in);
+void espsend(String in, int wait = 2500) {
+  in += "\r\n";
+//  Serial.println("Sending>>"+in);
   ESPserial.print(in);
   countdelay(wait);
 }
 
 void heartbeat() {
+  Serial.println("HEARTBEAT GO!!!!!!! NU!!! WEKR!!!! GAMING 2022 REAL WORKING!!!");
   connect(backend_ip, "80");
   make_get("/api/heartbeat/");  
 }
 
 void connect(String ip, String port) {
-  String out = "AT+CIPSTART=";
-  out +="\"TCP\",";
-  out +="\"";
-  out += ip;
-  out +="\",";
-  out += port;
-  espsend(out+"\r\n");
+  String out = "AT+CIPSTART=\"TCP\",\""+ip+"\","+port;
+//  out +="\"TCP\",";
+//  out +="\"";
+//  out += ip;
+//  out +="\",";
+//  out += port;
+  espsend(out);
 }
 
 
 
 void make_get(String url) {
-  String amount = (String) sizeof(url+"\r\n");
-  String out = "AT+CIPSEND="+amount+"\r\n";
-  espsend(out);
-  espsend("GET "+url+" HTTP/1.0\r\n");
+  String out = "GET "+url+" HTTP/1.0\r\n";
+
+  String gaming = out+"\r\n";
+  String amount = (String) gaming.length();
+  //Serial.println("sizeof: "+amount);
+  Serial.println("length: "+amount);
+  String cipsend = "AT+CIPSEND="+amount+"\r\n";
+  espsend(cipsend, 5000);
+  espsend(out, 5000);
 }
 
 
 void mainloop() {
-  Serial.println("beat send!");
-  heartbeat();
-  countdelay(5000);
+//  Serial.println(ms_since);
+  //heartbeat();
+  //countdelay(5000);
+}
+
+
+void connect_ap(String SSID, String password) {
+  espsend("AT+CIPMUX=0");
+  espsend("AT+CWMODE=1");
+  espsend("AT+CWJAP_CUR=\"" + SSID + "\",\"" + password + "\"", 5000);
 }
 
 
 void run_initialisation() {
   Serial.println("Debug start");
+
+    ESPserial.write("AT+UART_DEF=9600,8,1,0,0\r\n");
 
   if (baud_rate > 9600) {
     Serial.println("Changing ESP8266 bauderate to 9600 if it hasn't already.");
@@ -88,16 +109,18 @@ void run_initialisation() {
   }
 
   Serial.println("connecting to " + SSID);
-  Serial.println("Waiting on connection...");
-  ESPserial.print("AT+CWJAP_CUR=\"" + SSID + "\",\"" + password + "\"");
-  Serial.println("ESP >> ");
-  countdelay(500);
-  while (ESPserial.available()) {
-    Serial.print(ESPserial.read());
-  }
+  connect_ap(SSID, password);
+//  Serial.println("Waiting on connection...");
+//  ESPserial.print("AT+CWJAP_CUR=\"" + SSID + "\",\"" + password + "\"");
+//  Serial.println("ESP >> ");
+//  countdelay(500);
+//  while (ESPserial.available()) {
+//    Serial.print(ESPserial.read());
+//  }
 
   Serial.println("Ready");
   initialrun = true;
+  heartbeat();
 }
 
 
@@ -105,7 +128,7 @@ void run_initialisation() {
 void loop()
 
 {
-   if (initialrun) {
+   if (!initialrun) {
       run_initialisation();
   } else {
     mainloop();
@@ -113,14 +136,13 @@ void loop()
 
   if (ms_since > heartbeat_rate) {
     heartbeat();
+    ms_since = 0;
   }
   
 
   // listen for communication from the ESP8266 and then write it to the serial monitor
 
   if ( ESPserial.available() ) {
-
-
     Serial.write( ESPserial.read() );
   }
 
