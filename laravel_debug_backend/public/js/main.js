@@ -1,7 +1,7 @@
-window.onload = () =>{
-    console.log('hey');
-    returnTime();
-    check_heartbeat();
+window.onload = () => {
+  console.log('hey');
+  returnTime();
+  check_heartbeat();
 }
 
 const check_heartbeat = () => {
@@ -12,73 +12,75 @@ const check_heartbeat = () => {
   const status_text = document.getElementById("status_text");
   const connection_text = document.getElementById("js--connection-text");
 
-  let now = Date.now()/1000;
-  let seconds_since_beat = (now-last_beat);
+  let now = Date.now() / 1000;
+  let seconds_since_beat = (now - last_beat);
 
-  console.log("seconds since last heartbeat "+seconds_since_beat);
-  
+  console.log("seconds since last heartbeat " + seconds_since_beat);
+
   if (seconds_since_beat > 60) {
     console.log("heartbeat dead!!!");
     checkmark_connection.innerHTML = "error_outline";
-    checkmark_connection.style.color = "red";
+    // checkmark_connection.style.color = "red";
+    checkmark_connection.src = "/img/warning2.png";
     general_checkmark.innerHTML = "error_outline";
-    general_checkmark.style.color = "red";
+    // general_checkmark.style.color = "red";
+    general_checkmark.src = "/img/warning2.png";
     connection_text.style.color = "red";
     status_text.innerHTML = "niet naar behoren";
-  } 
+  }
   else {
     console.log("heartbeat alive!!");
   }
 }
 
-const openHistory = () =>{
-    const history_card = document.getElementById('js--history_card');
-    const card_wrapper = document.getElementsByClassName('card--wrapper');
-    history_card.style.opacity = "0"
-    history_card.style.display = "block";
-    history_card.animate([
-        { // from
-          opacity: 0,
-        },
-        { // to
-          opacity: 1,
-        }
-      ], 250);
-    history_card.style.opacity = "1"
+const openHistory = () => {
+  const history_card = document.getElementById('js--history_card');
+  const card_wrapper = document.getElementsByClassName('card--wrapper');
+  history_card.style.opacity = "0"
+  history_card.style.display = "block";
+  history_card.animate([
+    { // from
+      opacity: 0,
+    },
+    { // to
+      opacity: 1,
+    }
+  ], 250);
+  history_card.style.opacity = "1"
 
-    card_wrapper[0].style.opacity = "0.5";
-    card_wrapper[1].style.opacity = "0.5";
+  card_wrapper[0].style.opacity = "0.5";
+  card_wrapper[1].style.opacity = "0.5";
 }
 
-closeHistory = () =>{
-    const history_card = document.getElementById('js--history_card');
-    const card_wrapper = document.getElementsByClassName('card--wrapper');
+closeHistory = () => {
+  const history_card = document.getElementById('js--history_card');
+  const card_wrapper = document.getElementsByClassName('card--wrapper');
 
-    history_card.style.opacity = "1";
-    history_card.animate([
-        { // from
-            opacity: 1,
-        },
-        { // to
-            opacity: 0,
-        }
-    ], 250);
-    history_card.style.opacity = "0";
-    
-    setTimeout(function() {
-        history_card.style.display = "none";
-      }, 251);
+  history_card.style.opacity = "1";
+  history_card.animate([
+    { // from
+      opacity: 1,
+    },
+    { // to
+      opacity: 0,
+    }
+  ], 250);
+  history_card.style.opacity = "0";
 
-    card_wrapper[0].style.opacity = "1";
-    card_wrapper[1].style.opacity = "1";
+  setTimeout(function () {
+    history_card.style.display = "none";
+  }, 251);
+
+  card_wrapper[0].style.opacity = "1";
+  card_wrapper[1].style.opacity = "1";
 }
 
-returnTime = () =>{
+returnTime = () => {
   const time = document.getElementById('js--time');
   let current = new Date();
   time.innerHTML = current.toLocaleTimeString();
 }
 
-hoi = () =>{
-    console.log('hoi')
+hoi = () => {
+  console.log('hoi')
 }

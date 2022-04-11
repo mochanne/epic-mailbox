@@ -6,6 +6,23 @@
     --grey: #9D9D9D;
 }
 
+.big_img {
+    width: 48px;
+}
+
+.medium_img {
+    width: 24px;
+}
+
+.center_img {
+    width: 24px;
+    place-self: center;
+}
+
+#cancel {
+    float: right;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
