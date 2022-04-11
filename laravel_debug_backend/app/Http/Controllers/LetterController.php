@@ -27,7 +27,12 @@ class LetterController extends Controller
             'Soort_ontvangst' => 'post',
         ]);
 
+        $letter = letter::all()->first();
+
+        $letter->Brief_in_bus = "Vol";
+
         $History->save();
+        $letter->save();
         return redirect('/');
     }
 
@@ -36,7 +41,12 @@ class LetterController extends Controller
             'Soort_ontvangst' => 'geen post',
         ]);
 
+        $letter = letter::all()->first();
+
+        $letter->Brief_in_bus = "Leeg";
+
         $History->save();
+        $letter->save();
         return redirect('/');
     }
 
