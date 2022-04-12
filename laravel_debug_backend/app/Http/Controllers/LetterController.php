@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Letter;
 use App\Models\History;
 use App\Models\Status;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class LetterController extends Controller
 {
