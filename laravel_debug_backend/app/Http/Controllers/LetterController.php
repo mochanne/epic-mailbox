@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Letter;
 use App\Models\History;
 use App\Models\Status;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class LetterController extends Controller
 {
@@ -31,6 +33,16 @@ class LetterController extends Controller
         $History= History::create([
             'Soort_ontvangst' => 'post',
         ]);
+
+        // $process_cd = new Process(["touch","HALLO_HIER_BEN_IK.txt"]);
+        // $process_cd->run();
+
+        $process = new Process(["python3","../python/mqtt.py"]);
+        $process->run();
+        
+        if (!$process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
 
         $letter = letter::all()->first();
 
