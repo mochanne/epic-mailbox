@@ -146,6 +146,10 @@ hr.line {
     margin-bottom: 10%;
 }
 
+#statusline {
+    margin-bottom: 15px;
+}
+
 .button {
     display: block;
     margin: auto;

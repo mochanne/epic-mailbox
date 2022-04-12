@@ -50,7 +50,7 @@
                 <img  id="js--checkmark"  class="big_img" src="/img/warning.png" alt="">
                 <p>Alles werkt</p>
                 <p class="status" id="status_text">naar behoren</p>
-                <hr class="line">
+                <hr class="line" id="statusline">
                 <section class="status-grid--wrapper less-importance">
                     <p id="js--connection-text">Verbinding met de brievenbus</p>
                     <!-- <p id="js--checkmark_connection" class="material-icons-round grey status-grid-right">
@@ -58,11 +58,12 @@
                     </p> -->
                     <img id="js--checkmark_connection" class="medium_img center_img" src="/img/check.png" alt="">
 
-                    <p>Werking sensoren</p>
-                    <!-- <p class="material-icons-round grey status-grid-right">
+                    <!-- Checks voor sensoren die nog toegevoegd kunnen worden -->
+                    <!-- <p>Werking sensoren</p>
+                    <p class="material-icons-round grey status-grid-right">
                     task_alt
-                    </p> -->
-                    <img class="medium_img center_img" src="/img/check.png" alt="">
+                    </p> 
+                    <img class="medium_img center_img" src="/img/check.png" alt=""> -->
                 </section>
                 <a href="/" class="button secondary">Checks uitvoeren</a>
             </section>
