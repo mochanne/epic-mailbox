@@ -9,5 +9,6 @@ class Status extends Model
 {
     use HasFactory;
 
+    //Verwijst naar de status tabel in de mail_database.
     protected $table = "status";
 }

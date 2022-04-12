@@ -9,5 +9,6 @@ class Letter extends Model
 {
     use HasFactory;
 
+    //Verwijst naar de letters tabel in de mail_database.
     protected $table = "letters";
 }

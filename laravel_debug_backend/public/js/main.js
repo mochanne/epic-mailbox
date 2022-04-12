@@ -1,9 +1,10 @@
 window.onload = () => {
-  console.log('hey');
   returnTime();
   check_heartbeat();
 }
 
+//De check_heartbeat wordt gebruikt voor het controleren van de verbinding tussen de arduino en de database. 
+//Wanneer de arduino een hartbeat stuurt wordt de database geupdate.
 const check_heartbeat = () => {
   let last_beat = parseInt(document.getElementById("js--heartbeat").innerHTML);
 
@@ -17,6 +18,7 @@ const check_heartbeat = () => {
 
   console.log("seconds since last heartbeat " + seconds_since_beat);
 
+  //Wanneer de heartbeat langer dan 60 seconden voor het laatst ontvangen is wordt er aan de gebruiker aangegeven dat de connectie niet naar behoren werkt. 
   if (seconds_since_beat > 60) {
     console.log("heartbeat dead!!!");
     checkmark_connection.innerHTML = "error_outline";
@@ -33,6 +35,7 @@ const check_heartbeat = () => {
   }
 }
 
+//De openHistory functie opent het scherm met de laatste ontvangen post.
 const openHistory = () => {
   const history_card = document.getElementById('js--history_card');
   const card_wrapper = document.getElementsByClassName('card--wrapper');
@@ -52,6 +55,7 @@ const openHistory = () => {
   card_wrapper[1].style.opacity = "0.5";
 }
 
+//De closeHistory sluit het scherm met de laatst ontvangen post.
 closeHistory = () => {
   const history_card = document.getElementById('js--history_card');
   const card_wrapper = document.getElementsByClassName('card--wrapper');
@@ -75,12 +79,10 @@ closeHistory = () => {
   card_wrapper[1].style.opacity = "1";
 }
 
+//De returnTime functie haalt de huidige tijd op. 
+//Met deze tijd wordt er aan de gebruiker aangegeven wanneer er voor het laatst gecontroleerd is of er post is.
 returnTime = () => {
   const time = document.getElementById('js--time');
   let current = new Date();
   time.innerHTML = current.toLocaleTimeString();
-}
-
-hoi = () => {
-  console.log('hoi')
 }

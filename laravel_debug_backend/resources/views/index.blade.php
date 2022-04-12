@@ -75,6 +75,7 @@
             <img class="big_img" id="cancel" src="/img/Cancel.png" alt="" onclick='closeHistory()'>
             <h1>Geschiedenis</h1>
             <article class="letterCard--wrapper">
+                <!-- Voor elke post die is ontvangen wordt er een eigen "kaartje" aangemaakt-->
                 @foreach($history as $history)
                     @include('components.letterCard')
                 @endforeach
