@@ -47,7 +47,7 @@
                 <!-- <span class="material-icons-round blue" id="js--checkmark" style="font-size:48px;">
                 task_alt
                 </span> -->
-                <img  id="js--checkmark"  class="big_img" src="/img/warning.png" alt="">
+                <img  id="js--checkmark"  class="big_img" src="/img/check.png" alt="">
                 <p>Alles werkt</p>
                 <p class="status" id="status_text">naar behoren</p>
                 <hr class="line" id="statusline">
