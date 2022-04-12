@@ -10,6 +10,7 @@ use App\Models\Status;
 class LetterController extends Controller
 {
     //In checkPost wordt er gekeken of er post is. Is de status in de database 0 dan wordt deze 1 en andersom.
+    //Gebruikt voor testen/handig voor debugggen.
     public function checkPost(){
         $letter = Letter::all()->first();
 
