@@ -1,7 +1,6 @@
 # Benodigheden
 
 - [Pin headers                    1x](https://www.tinytronics.nl/shop/nl/kabels-en-connectoren/connectoren/pin-headers/male/40-pins-header-male-rood)
-- [Multiplexer                    1x](https://www.tinytronics.nl/shop/nl/communicatie-en-signalen/io-converters/hc4067-16-kanaals-analoge-multiplexer)
 - [Antenne                        1x](https://www.tinytronics.nl/shop/nl/communicatie-en-signalen/draadloos/antennes/2.4ghz/2.4ghz-wifi-antenne-met-sma-naar-ufl-connector)
 - [ESP8266 ESP01                  1x](https://www.tinytronics.nl/shop/nl/communicatie-en-signalen/draadloos/wi-fi/modules/esp8266-wifi-module-esp-01-1mb)
 - [Arduino nano/uno               1x](https://www.tinytronics.nl/shop/nl/development-boards/microcontroller-boards/arduino-compatible/nano-v3.0-compatible)
@@ -16,8 +15,6 @@
 ## Waar zijn de benodigdheden voor nodig?
 
 De pin header is nodig om te solderen aan de multiplexer en de wifimodule zodat deze op een breadboard gezet kunnen worden en kunnen worden aangesloten op andere componenten. Wij maken gebruik van een pin header met 40 pins.
-
-De analoge multiplexer nodig om de 5 sensoren op de Arduino nano aan te sluiten, aangezien de Arduino anders niet genoeg pins heeft. Omdat er 5 sensoren zijn, is er een minimale multiplexer nodig van 16 pinnen. 
 
 De Wi-Fi antenne wordt gebruikt om het signaal van de Wi-Fi module in de brievenbus te versterken omdat de brievenbus van metaal is en dit het signaal kan blokkeren. De antenne kan aangesloten worden op de ESP8266.
 
