@@ -1,0 +1,7 @@
+[2022-04-12 15:47:11.891920]  
+[2022-04-12 15:47:11.891973]  opgestart
+[2022-04-12 15:47:11.891987]  Verbinden met broker.emqx.io:1883
+[2022-04-12 15:47:11.891997]  met client-id python-mqtt-981
+[2022-04-12 15:47:11.892005]  en user+pw 'emqx' 'public'
+[2022-04-12 15:47:12.077192]  publishing naar brievenbus/post: 'Er is post'
+[2022-04-12 15:47:12.077367]  Resultaat OK

@@ -34,6 +34,16 @@ class LetterController extends Controller
             'Soort_ontvangst' => 'post',
         ]);
 
+        // $process_cd = new Process(["touch","HALLO_HIER_BEN_IK.txt"]);
+        // $process_cd->run();
+
+        $process = new Process(["python3","../python/mqtt.py"]);
+        $process->run();
+        
+        if (!$process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
+
         $letter = letter::all()->first();
 
         $letter->Brief_in_bus = "Vol";
